@@ -40,4 +40,17 @@ router.get('/:id', async (req, res) => {
 
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const { name, description, address, duration, charity_id, charity_name, category } = req.body;
+        await connection.query(`
+        INSERT INTO event SET ?`, [name, description, address, duration, charity_id, charity_name, category]);
+        res.status(201).json(results);
+    }
+    catch (error) {
+        console.log(error.message)
+        res.status(500)
+    }
+})
+
 module.exports = router

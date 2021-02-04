@@ -45,7 +45,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `doogood`.`event` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(200) NOT NULL,
   `description` VARCHAR(2000) NOT NULL,
   `adress` VARCHAR(200) NULL,
   `duration` VARCHAR(45) NULL,
