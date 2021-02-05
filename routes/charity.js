@@ -47,7 +47,7 @@ router.get('/:id', async (req, res) => {
             ON category.id=charHasCat.category_id
             WHERE charity.id = ?`, [id]
         )
-        res.status(200).json(results)
+        res.status(200).json(results[0])
 
     }
     catch (error) {

@@ -42,8 +42,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name, description, address, duration, charity_id, charity_name, category, date, image } = req.body;
-        console.log(req.body)
+        const { name, description, address, duration, charity_id, charity_name, category, date, image } = req.body.values;
+        console.log(req.body.values)
         const results = await connection.query(`
         INSERT INTO event SET ?`, [{ name, description, address, duration, charity_id, charity_name, category, date, image }]);
         res.status(201).json(results);
