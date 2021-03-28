@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "charities",
+  "info": {
+    "name": "Charity",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "categories": {
+      "collection": "category"
+    },
+    "missions": {
+      "via": "charity",
+      "collection": "mission"
+    }
+  }
+}
