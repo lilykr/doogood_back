@@ -1,37 +1,28 @@
 {
-  "name": "doogood",
+  "name": "@keystonejs/example-projects-starter",
+  "description": "An example KeystoneJS project with a User list and Authentication.",
   "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+  "version": "6.0.1",
+  "author": "The KeystoneJS Development Team",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-app/example-projects/starter",
+  "homepage": "https://github.com/keystonejs/keystone-5",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
   },
-  "devDependencies": {
-    "@la-forge-dev/eslint-config-tsx": "^1.1.4"
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true keystone dev",
+    "build": "cross-env NODE_ENV=production keystone build",
+    "start": "cross-env NODE_ENV=production keystone start",
+    "create-tables": "cross-env CREATE_TABLES=true keystone create-tables"
   },
   "dependencies": {
-    "strapi": "3.5.4",
-    "strapi-admin": "3.5.4",
-    "strapi-connector-mongoose": "3.5.4",
-    "strapi-plugin-content-manager": "3.5.4",
-    "strapi-plugin-content-type-builder": "3.5.4",
-    "strapi-plugin-email": "3.5.4",
-    "strapi-plugin-upload": "3.5.4",
-    "strapi-plugin-users-permissions": "3.5.4",
-    "strapi-utils": "3.5.4"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "dfad0542-6ec1-4959-a0f4-5699489e9c5b"
-  },
-  "engines": {
-    "node": ">=10.16.0 <=14.x.x",
-    "npm": "^6.0.0"
-  },
-  "license": "MIT"
+    "@keystonejs/adapter-mongoose": "^11.1.0",
+    "@keystonejs/app-admin-ui": "^7.4.1",
+    "@keystonejs/app-graphql": "^6.2.2",
+    "@keystonejs/auth-password": "^6.0.2",
+    "@keystonejs/fields": "^22.0.1",
+    "@keystonejs/keystone": "^19.2.1",
+    "cross-env": "^7.0.3"
+  }
 }
