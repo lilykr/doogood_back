@@ -4,8 +4,8 @@ import { Keystone } from '@keystonejs/keystone'
 import { createItem, getItems } from '@keystonejs/server-side-graphql-client'
 
 const adminCreds = {
-  email: "admin@doogood.com",
-  password: "azertyuiop"
+  email: 'admin@doogood.com',
+  password: 'azertyuiop',
 }
 
 const createMasterAdmin = async (keystone: Keystone, context: any) => {
@@ -40,11 +40,10 @@ export const onConnect = async (keystone: Keystone) => {
     keystone,
     listKey: 'User',
     returnFields: 'email',
-    where: { email: "admin@doogood.com" },
-  });
+    where: { email: 'admin@doogood.com' },
+  })
 
-
-  const admin = res[0];
+  const admin = res[0]
 
   // Auto-create master admin
   if (!admin)
@@ -56,6 +55,5 @@ export const onConnect = async (keystone: Keystone) => {
     console.log(`${green('✔')} ${bold('Master Admin:')}`)
     console.log(`➜ ${dim('Email:   ')} ${email}`)
     console.log(`➜ ${dim('Password:')} ${password}`)
-
   }
 }
