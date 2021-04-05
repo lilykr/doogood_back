@@ -1,13 +1,9 @@
-# KeystoneJS Starter Template
+# Doogood back end with KeysoneJS
 
-You've created a KeystoneJS project! This project contains a simple list of users and an admin application (`localhost:3000/admin`) with basic authentication.
+## .env example
 
-## Running the Project.
 
-To run this project first run `npm install`. Note: If you generated this project via the Keystone cli step this has been done for you \\o/.
-
-Once running, the Keystone Admin UI is reachable via `localhost:3000/admin`.
-
-## Next steps
-
-This example has no front-end application but you can build your own using the GraphQL API (`http://localhost:3000/admin/graphiql`).
+```
+KEYSTONE_SECRET=0c5a4d3e443a015d3eaa950e079b2c3d4c0d9fe04ca1f159d2f45fb1bd713cfa9630896f43456f42ef7f7f06ac5917e7
+DISABLE_LOGGING=true
+```

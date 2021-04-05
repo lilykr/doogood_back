@@ -1,28 +1,34 @@
 {
-  "name": "@keystonejs/example-projects-starter",
-  "description": "An example KeystoneJS project with a User list and Authentication.",
+  "name": "low-impact-server",
+  "version": "1.0.0",
   "private": true,
-  "version": "6.0.1",
-  "author": "The KeystoneJS Development Team",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-app/example-projects/starter",
-  "homepage": "https://github.com/keystonejs/keystone-5",
-  "license": "MIT",
-  "engines": {
-    "node": ">=10.0.0"
-  },
+  "main": "dist/index",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true keystone dev",
-    "build": "cross-env NODE_ENV=production keystone build",
-    "start": "cross-env NODE_ENV=production keystone start",
-    "create-tables": "cross-env CREATE_TABLES=true keystone create-tables"
+    "compile": "tsc -p tsconfig.build.json",
+    "build": "yarn run clean && yarn run compile",
+    "start": "node build",
+    "dev": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --rs src",
+    "lint": "eslint src tests --fix --ext .js,.jsx,.ts,.tsx,.json --no-error-on-unmatched-pattern",
+    "ts-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@keystonejs/adapter-mongoose": "^11.1.0",
-    "@keystonejs/app-admin-ui": "^7.4.1",
-    "@keystonejs/app-graphql": "^6.2.2",
-    "@keystonejs/auth-password": "^6.0.2",
-    "@keystonejs/fields": "^22.0.1",
-    "@keystonejs/keystone": "^19.2.1",
-    "cross-env": "^7.0.3"
+    "@keystonejs/adapter-mongoose": "^11.2.0",
+    "@keystonejs/app-graphql": "6.2.0",
+    "@keystonejs/auth-password": "6.0.1",
+    "@keystonejs/fields": "22.0.0",
+    "@keystonejs/keystone": "19.3.1",
+    "@keystonejs/list-plugins": "8.1.0",
+    "chalk": "^4.1.0",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@la-forge-dev/eslint-config-tsx": "^1.1.4",
+    "@types/node": "^14.14.31",
+    "cross-env": "^7.0.3",
+    "graphql": "^15.5.0",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": ">=3.3.1 and <4.1.0"
   }
 }

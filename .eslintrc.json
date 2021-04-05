@@ -1,20 +1,12 @@
 {
     "extends": "@la-forge-dev/eslint-config-tsx",
-    "parser": "babel-eslint",
+    "rules": {
+      "global-require": "off",
+      "no-unused-expressions" : "off",
+      "radix": "off",
+      "react/jsx-filename-extension": "off"
+    },
     "env": {
-        "commonjs": true,
-        "es6": true,
-        "node": true,
-        "browser": false
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": false
-        },
-        "sourceType": "module"
-    },
-    "globals": {
-        "strapi": true
+      "jest": true
     }
-}
+  }

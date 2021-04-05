@@ -1,18 +1,25 @@
-const { Keystone } = require('@keystonejs/keystone');
-const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
-const { Text, Checkbox, Password } = require('@keystonejs/fields');
-const { GraphQLApp } = require('@keystonejs/app-graphql');
-const { AdminUIApp } = require('@keystonejs/app-admin-ui');
-const initialiseData = require('./initial-data');
+require('dotenv').config()
 
-const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+import express from 'express'
+
+import { AdminUIApp } from '@keystonejs/app-admin-ui'
+import { GraphQLApp } from '@keystonejs/app-graphql'
+import { Text, Checkbox, Password } from '@keystonejs/fields';
+import { Keystone } from '@keystonejs/keystone';
+import { onConnect } from './init';
+
+import { PasswordAuthStrategy } from '@keystonejs/auth-password';
+import { MongooseAdapter as Adapter } from '@keystonejs/adapter-mongoose';
+
 const PROJECT_NAME = 'doogood';
 const adapterConfig = { mongoUri: 'mongodb://localhost/doogood' };
 
+export const adapter = new Adapter(adapterConfig)
 
 const keystone = new Keystone({
-  adapter: new Adapter(adapterConfig),
-  onConnect: process.env.CREATE_TABLES !== 'true' && initialiseData,
+  adapter,
+  cookieSecret: process.env.KEYSTONE_SECRET,
+  onConnect,
 });
 
 // Access control functions
@@ -70,14 +77,30 @@ const authStrategy = keystone.createAuthStrategy({
   config: { protectIdentities: process.env.NODE_ENV === 'production' },
 });
 
-module.exports = {
-  keystone,
-  apps: [
-    new GraphQLApp(),
-    new AdminUIApp({
-      name: PROJECT_NAME,
-      enableDefaultRoute: true,
-      authStrategy,
-    }),
-  ],
-};
+const port = process.env.PORT || 3000
+const dev = process.env.NODE_ENV !== 'production'
+
+const apps = [
+  new GraphQLApp(),
+  new AdminUIApp({
+    name: PROJECT_NAME,
+    enableDefaultRoute: true,
+    authStrategy,
+  }),
+]
+
+export default {
+  port,
+  listen: async () => {
+    const app = express()
+
+    const options = { apps, dev }
+    const { middlewares } = await keystone.prepare(options)
+
+    await keystone.connect()
+
+    app.use(middlewares)
+
+    return app.listen(port)
+  },
+}
