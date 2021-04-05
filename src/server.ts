@@ -3,16 +3,16 @@ require('dotenv').config()
 import express from 'express'
 
 import { AdminUIApp } from '@keystonejs/app-admin-ui'
+import { onConnect } from './init'
 import { GraphQLApp } from '@keystonejs/app-graphql'
-import { Text, Checkbox, Password } from '@keystonejs/fields';
-import { Keystone } from '@keystonejs/keystone';
-import { onConnect } from './init';
+import { Text, Checkbox, Password } from '@keystonejs/fields'
+import { Keystone } from '@keystonejs/keystone'
 
-import { PasswordAuthStrategy } from '@keystonejs/auth-password';
-import { MongooseAdapter as Adapter } from '@keystonejs/adapter-mongoose';
+import { PasswordAuthStrategy } from '@keystonejs/auth-password'
+import { MongooseAdapter as Adapter } from '@keystonejs/adapter-mongoose'
 
-const PROJECT_NAME = 'doogood';
-const adapterConfig = { mongoUri: 'mongodb://localhost/doogood' };
+const PROJECT_NAME = 'doogood'
+const adapterConfig = { mongoUri: 'mongodb://localhost/doogood' }
 
 export const adapter = new Adapter(adapterConfig)
 
@@ -20,27 +20,26 @@ const keystone = new Keystone({
   adapter,
   cookieSecret: process.env.KEYSTONE_SECRET,
   onConnect,
-});
+})
 
 // Access control functions
-const userIsAdmin = ({ authentication: { item: user } }) => Boolean(user && user.isAdmin);
+const userIsAdmin = ({ authentication: { item: user } }) => Boolean(user && user.isAdmin)
 const userOwnsItem = ({ authentication: { item: user } }) => {
-  if (!user) {
-    return false;
-  }
+  if (!user)
+    return false
 
   // Instead of a boolean, you can return a GraphQL query:
   // https://www.keystonejs.com/api/access-control#graphqlwhere
-  return { id: user.id };
-};
+  return { id: user.id }
+}
 
 const userIsAdminOrOwner = auth => {
-  const isAdmin = access.userIsAdmin(auth);
-  const isOwner = access.userOwnsItem(auth);
-  return isAdmin ? isAdmin : isOwner;
-};
+  const isAdmin = access.userIsAdmin(auth)
+  const isOwner = access.userOwnsItem(auth)
+  return isAdmin || isOwner
+}
 
-const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
+const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner }
 
 keystone.createList('User', {
   fields: {
@@ -69,13 +68,13 @@ keystone.createList('User', {
     delete: access.userIsAdmin,
     auth: true,
   },
-});
+})
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: 'User',
   config: { protectIdentities: process.env.NODE_ENV === 'production' },
-});
+})
 
 const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
