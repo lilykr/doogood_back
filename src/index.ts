@@ -8,7 +8,7 @@ server
   .listen()
   .then(() => {
     console.log()
-    console.log(`${green('✔')} ${bold('Keystone instance is ready')} 🚀`);
+    console.log(`${green('✔')} ${bold('Keystone instance is ready')} 🚀`)
     console.log(`🔗 ${dim('Keystone Admin UI:')}    http://localhost:${server.port}/admin`)
     console.log(`🔗 ${dim('GraphQL Playground:')}   http://localhost:${server.port}/admin/graphiql`)
     console.log(`🔗 ${dim('GraphQL API:')}          http://localhost:${server.port}/admin/api`)
