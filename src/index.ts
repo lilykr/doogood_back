@@ -1,6 +1,7 @@
 require('dotenv').config()
 
-import { bold, dim, green, yellow } from 'chalk';
+import { bold, dim, green, yellow } from 'chalk'
+
 import server, { adapter as MongoDB } from './server'
 
 server
