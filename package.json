@@ -16,6 +16,8 @@
     "@keystonejs/app-graphql": "6.2.0",
     "@keystonejs/auth-password": "6.0.1",
     "@keystonejs/fields": "22.0.0",
+    "@keystonejs/fields-location-google": "^3.4.0",
+    "@keystonejs/fields-wysiwyg-tinymce": "^5.4.0",
     "@keystonejs/keystone": "19.3.1",
     "@keystonejs/list-plugins": "8.1.0",
     "@la-forge-dev/eslint-config-tsx": "^1.1.4",

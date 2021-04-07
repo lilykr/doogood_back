@@ -1,5 +1,6 @@
-import { Text, Url, Relationship } from '@keystonejs/fields'
+import { Text, DateTimeUtc, Relationship } from '@keystonejs/fields'
 import { LocationGoogle } from '@keystonejs/fields-location-google'
+import { Wysiwyg } from '@keystonejs/fields-wysiwyg-tinymce'
 
 module.exports = {
   fields: {
@@ -8,7 +9,7 @@ module.exports = {
       isRequired: true,
     },
     description: {
-      type: Text,
+      type: Wysiwyg,
       isRequired: true,
     },
     address: {
@@ -16,20 +17,16 @@ module.exports = {
       googleMapsKey: process.env.GOOGLE_MAPS_KEY,
       isRequired: true,
     },
-    email: {
-      type: Text,
+    date: {
+      type: DateTimeUtc,
       isRequired: true,
     },
-    telephone: {
+    duration: {
       type: Text,
-      isRequired: false,
-    },
-    website: {
-      type: Url,
       isRequired: false,
     },
     category: { type: Relationship, ref: 'Category', many: true },
-    missions: { type: Relationship, ref: 'Mission.charity', many: true },
-    user: { type: Relationship, ref: 'User', many: false },
+    charity: { type: Relationship, ref: 'Charity.missions', many: false },
+
   },
 }

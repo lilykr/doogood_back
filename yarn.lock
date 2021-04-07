@@ -1923,6 +1923,26 @@
     "@keystonejs/adapter-prisma" "^3.2.0"
     "@keystonejs/fields" "^22.1.0"
 
+"@keystonejs/fields-location-google@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@keystonejs/fields-location-google/-/fields-location-google-3.4.0.tgz#c6d57f4c77be5a500cb300698cfe959987b6956b"
+  integrity sha512-F2gaSzP5IennruGoW7YDI6vyd4EKfwYlXKutaSRLnYfXQUNs0Xe7H/CXFCXDc1bjGnOX9cJQTOrBz5RwAHzKZQ==
+  dependencies:
+    "@arch-ui/fields" "^3.0.6"
+    "@arch-ui/select" "^0.1.10"
+    "@babel/runtime" "^7.12.13"
+    "@emotion/core" "^10.1.1"
+    "@keystonejs/adapter-knex" "^13.2.0"
+    "@keystonejs/adapter-mongoose" "^11.2.0"
+    "@keystonejs/adapter-prisma" "^3.2.0"
+    "@keystonejs/fields" "^22.1.0"
+    cuid "^2.1.8"
+    google-maps-react "^2.0.6"
+    mongoose "^5.11.16"
+    node-fetch "^2.6.1"
+    react "^17.0.1"
+    react-toast-notifications "^2.4.3"
+
 "@keystonejs/fields-mongoid@^9.2.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@keystonejs/fields-mongoid/-/fields-mongoid-9.2.0.tgz#39f8a145cbb37230355ba3226fa0fd701d2e5e37"
@@ -1935,6 +1955,23 @@
     "@keystonejs/adapter-prisma" "^3.2.0"
     "@keystonejs/fields" "^22.1.0"
     react "^17.0.1"
+
+"@keystonejs/fields-wysiwyg-tinymce@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@keystonejs/fields-wysiwyg-tinymce/-/fields-wysiwyg-tinymce-5.4.0.tgz#9d64ef415602dbe3d9e629270d3a95282ce609cd"
+  integrity sha512-OZFjWefFLMRqaf5t3tiqyo/uTLhsEzJxe0wMuR8Sam0ZqqnL00CgXWTzorrAt9WaM1Hsiz0NBxCA6vLCeva2mA==
+  dependencies:
+    "@arch-ui/fields" "^3.0.6"
+    "@arch-ui/input" "^0.1.12"
+    "@arch-ui/theme" "^0.0.12"
+    "@babel/runtime" "^7.12.13"
+    "@emotion/core" "^10.1.1"
+    "@keystonejs/fields" "^22.1.0"
+    "@primer/octicons-react" "^11.3.0"
+    "@tinymce/tinymce-react" "^3.10.1"
+    prop-types "^15.7.2"
+    react "^17.0.1"
+    tinymce "^5.6.2"
 
 "@keystonejs/fields@22.0.0":
   version "22.0.0"
@@ -2409,6 +2446,14 @@
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/@timsuchanek/sleep-promise/-/sleep-promise-8.0.1.tgz#81c0754b345138a519b51c2059771eb5f9b97818"
   integrity sha512-cxHYbrXfnCWsklydIHSw5GCMHUPqpJ/enxWSyVHNOgNe61sit/+aOXTTI+VOdWkvVaJsI2vsB9N4+YDNITawOQ==
+
+"@tinymce/tinymce-react@^3.10.1":
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-react/-/tinymce-react-3.12.2.tgz#1271d63e2071dc95f3b48dd20363309d19012c9f"
+  integrity sha512-M6YQ9e+9rpxrZDOeNPmjgroEfooEKiMVuI4I3+xQtMX1hQQ/t9pGE9nUdS0faZDvqhlc8B/w12GJQNU5ekPo4g==
+  dependencies:
+    prop-types "^15.6.2"
+    tinymce "^5.7.1"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -6029,6 +6074,11 @@ globby@^11.0.0, globby@^11.0.1, globby@^11.0.2:
     merge2 "^1.3.0"
     slash "^3.0.0"
 
+google-maps-react@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.6.tgz#0473356207ab6b47227b393b89e4b83f6eab06da"
+  integrity sha512-M8Eo9WndfQEfxcmm6yRq03qdJgw1x6rQmJ9DN+a+xPQ3K7yNDGkVDbinrf4/8vcox7nELbeopbm4bpefKewWfQ==
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
   version "4.2.6"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
@@ -7748,7 +7798,7 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-node-fetch@2.6.1, node-fetch@^2.1.2, node-fetch@^2.2.0, node-fetch@^2.6.0:
+node-fetch@2.6.1, node-fetch@^2.1.2, node-fetch@^2.2.0, node-fetch@^2.6.0, node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
@@ -10289,6 +10339,11 @@ tiny-warning@^1.0.0, tiny-warning@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
+
+tinymce@^5.6.2, tinymce@^5.7.1:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.7.1.tgz#658a6fb4c7d53a8496cc00f8da33f4b8290da06d"
+  integrity sha512-1gY8RClc734srSlkYwY0MQzmkS1j73PuPC+nYtNtrrQVPY9VNcZ4bOiRwzTbdjPPD8GOtv6BAk8Ww/H2RiqKpA==
 
 tmp@0.2.1:
   version "0.2.1"
