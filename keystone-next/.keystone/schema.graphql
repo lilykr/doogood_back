@@ -112,8 +112,76 @@ input UsersCreateInput {
   data: UserCreateInput
 }
 
-type Post_content_DocumentField {
-  document(hydrateRelationships: Boolean! = false): JSON!
+""" A keystone list """
+type Category {
+  id: ID!
+  name: String
+}
+
+input CategoryWhereInput {
+  AND: [CategoryWhereInput]
+  OR: [CategoryWhereInput]
+  id: ID
+  id_not: ID
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+}
+
+input CategoryWhereUniqueInput {
+  id: ID!
+}
+
+enum SortCategoriesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+
+input CategoryUpdateInput {
+  name: String
+}
+
+input CategoriesUpdateInput {
+  id: ID!
+  data: CategoryUpdateInput
+}
+
+input CategoryCreateInput {
+  name: String
+}
+
+input CategoriesCreateInput {
+  data: CategoryCreateInput
+}
+
+input CategoryRelateToManyInput {
+  create: [CategoryCreateInput]
+  connect: [CategoryWhereUniqueInput]
+  disconnect: [CategoryWhereUniqueInput]
+  disconnectAll: Boolean
 }
 
 input UserRelateToOneInput {
@@ -121,6 +189,404 @@ input UserRelateToOneInput {
   connect: UserWhereUniqueInput
   disconnect: UserWhereUniqueInput
   disconnectAll: Boolean
+}
+
+input MissionRelateToManyInput {
+  create: [MissionCreateInput]
+  connect: [MissionWhereUniqueInput]
+  disconnect: [MissionWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+type CloudinaryImage_File {
+  id: ID
+  path: String
+  filename: String
+  originalFilename: String
+  mimetype: String
+  encoding: String
+  publicUrl: String
+  publicUrlTransformed(transformation: CloudinaryImageFormat): String
+}
+
+"""
+Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
+All options are strings as they ultimately end up in a URL.
+"""
+input CloudinaryImageFormat {
+  """ Rewrites the filename to be this pretty string. Do not include `/` or `.` 
+  """
+  prettyName: String
+  width: String
+  height: String
+  crop: String
+  aspect_ratio: String
+  gravity: String
+  zoom: String
+  x: String
+  y: String
+  format: String
+  fetch_format: String
+  quality: String
+  radius: String
+  angle: String
+  effect: String
+  opacity: String
+  border: String
+  background: String
+  overlay: String
+  underlay: String
+  default_image: String
+  delay: String
+  color: String
+  color_space: String
+  dpr: String
+  page: String
+  density: String
+  flags: String
+  transformation: String
+}
+
+""" A keystone list """
+type Charity {
+  id: ID!
+  name: String
+  description: String
+  email: String
+  telephone: String
+  website: String
+  category(where: CategoryWhereInput, search: String, sortBy: [SortCategoriesBy!], orderBy: String, first: Int, skip: Int): [Category!]!
+  _categoryMeta(where: CategoryWhereInput, search: String, sortBy: [SortCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  user: User
+  missions(where: MissionWhereInput, search: String, sortBy: [SortMissionsBy!], orderBy: String, first: Int, skip: Int): [Mission!]!
+  _missionsMeta(where: MissionWhereInput, search: String, sortBy: [SortMissionsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  cover: CloudinaryImage_File
+}
+
+input CharityWhereInput {
+  AND: [CharityWhereInput]
+  OR: [CharityWhereInput]
+  id: ID
+  id_not: ID
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  telephone: String
+  telephone_not: String
+  telephone_contains: String
+  telephone_not_contains: String
+  telephone_starts_with: String
+  telephone_not_starts_with: String
+  telephone_ends_with: String
+  telephone_not_ends_with: String
+  telephone_i: String
+  telephone_not_i: String
+  telephone_contains_i: String
+  telephone_not_contains_i: String
+  telephone_starts_with_i: String
+  telephone_not_starts_with_i: String
+  telephone_ends_with_i: String
+  telephone_not_ends_with_i: String
+  telephone_in: [String]
+  telephone_not_in: [String]
+  website: String
+  website_not: String
+  website_contains: String
+  website_not_contains: String
+  website_starts_with: String
+  website_not_starts_with: String
+  website_ends_with: String
+  website_not_ends_with: String
+  website_i: String
+  website_not_i: String
+  website_contains_i: String
+  website_not_contains_i: String
+  website_starts_with_i: String
+  website_not_starts_with_i: String
+  website_ends_with_i: String
+  website_not_ends_with_i: String
+  website_in: [String]
+  website_not_in: [String]
+
+  """ condition must be true for all nodes """
+  category_every: CategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  category_some: CategoryWhereInput
+
+  """ condition must be false for all nodes """
+  category_none: CategoryWhereInput
+  user: UserWhereInput
+  user_is_null: Boolean
+
+  """ condition must be true for all nodes """
+  missions_every: MissionWhereInput
+
+  """ condition must be true for at least 1 node """
+  missions_some: MissionWhereInput
+
+  """ condition must be false for all nodes """
+  missions_none: MissionWhereInput
+  cover: String
+  cover_not: String
+  cover_in: [String]
+  cover_not_in: [String]
+}
+
+input CharityWhereUniqueInput {
+  id: ID!
+}
+
+enum SortCharitiesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  email_ASC
+  email_DESC
+  telephone_ASC
+  telephone_DESC
+  website_ASC
+  website_DESC
+  category_ASC
+  category_DESC
+  user_ASC
+  user_DESC
+  missions_ASC
+  missions_DESC
+}
+
+input CharityUpdateInput {
+  name: String
+  description: String
+  email: String
+  telephone: String
+  website: String
+  category: CategoryRelateToManyInput
+  user: UserRelateToOneInput
+  missions: MissionRelateToManyInput
+  cover: Upload
+}
+
+input CharitiesUpdateInput {
+  id: ID!
+  data: CharityUpdateInput
+}
+
+input CharityCreateInput {
+  name: String
+  description: String
+  email: String
+  telephone: String
+  website: String
+  category: CategoryRelateToManyInput
+  user: UserRelateToOneInput
+  missions: MissionRelateToManyInput
+  cover: Upload
+}
+
+input CharitiesCreateInput {
+  data: CharityCreateInput
+}
+
+type Mission_description_DocumentField {
+  document(hydrateRelationships: Boolean! = false): JSON!
+}
+
+input CharityRelateToOneInput {
+  create: CharityCreateInput
+  connect: CharityWhereUniqueInput
+  disconnect: CharityWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Mission {
+  id: ID!
+  name: String
+  description: Mission_description_DocumentField
+  date: String
+  duration: String
+  category(where: CategoryWhereInput, search: String, sortBy: [SortCategoriesBy!], orderBy: String, first: Int, skip: Int): [Category!]!
+  _categoryMeta(where: CategoryWhereInput, search: String, sortBy: [SortCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  charity: Charity
+}
+
+input MissionWhereInput {
+  AND: [MissionWhereInput]
+  OR: [MissionWhereInput]
+  id: ID
+  id_not: ID
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  date: String
+  date_not: String
+  date_lt: String
+  date_lte: String
+  date_gt: String
+  date_gte: String
+  date_in: [String]
+  date_not_in: [String]
+  duration: String
+  duration_not: String
+  duration_contains: String
+  duration_not_contains: String
+  duration_starts_with: String
+  duration_not_starts_with: String
+  duration_ends_with: String
+  duration_not_ends_with: String
+  duration_i: String
+  duration_not_i: String
+  duration_contains_i: String
+  duration_not_contains_i: String
+  duration_starts_with_i: String
+  duration_not_starts_with_i: String
+  duration_ends_with_i: String
+  duration_not_ends_with_i: String
+  duration_in: [String]
+  duration_not_in: [String]
+
+  """ condition must be true for all nodes """
+  category_every: CategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  category_some: CategoryWhereInput
+
+  """ condition must be false for all nodes """
+  category_none: CategoryWhereInput
+  charity: CharityWhereInput
+  charity_is_null: Boolean
+}
+
+input MissionWhereUniqueInput {
+  id: ID!
+}
+
+enum SortMissionsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  date_ASC
+  date_DESC
+  duration_ASC
+  duration_DESC
+  category_ASC
+  category_DESC
+  charity_ASC
+  charity_DESC
+}
+
+input MissionUpdateInput {
+  name: String
+  description: JSON
+  date: String
+  duration: String
+  category: CategoryRelateToManyInput
+  charity: CharityRelateToOneInput
+}
+
+input MissionsUpdateInput {
+  id: ID!
+  data: MissionUpdateInput
+}
+
+input MissionCreateInput {
+  name: String
+  description: JSON
+  date: String
+  duration: String
+  category: CategoryRelateToManyInput
+  charity: CharityRelateToOneInput
+}
+
+input MissionsCreateInput {
+  data: MissionCreateInput
+}
+
+type Post_content_DocumentField {
+  document(hydrateRelationships: Boolean! = false): JSON!
 }
 
 input TagRelateToManyInput {
@@ -521,6 +987,60 @@ type Mutation {
   """ Delete multiple User items by ID. """
   deleteUsers(ids: [ID!]): [User]
 
+  """ Create a single Category item. """
+  createCategory(data: CategoryCreateInput): Category
+
+  """ Create multiple Category items. """
+  createCategories(data: [CategoriesCreateInput]): [Category]
+
+  """ Update a single Category item by ID. """
+  updateCategory(id: ID!, data: CategoryUpdateInput): Category
+
+  """ Update multiple Category items by ID. """
+  updateCategories(data: [CategoriesUpdateInput]): [Category]
+
+  """ Delete a single Category item by ID. """
+  deleteCategory(id: ID!): Category
+
+  """ Delete multiple Category items by ID. """
+  deleteCategories(ids: [ID!]): [Category]
+
+  """ Create a single Charity item. """
+  createCharity(data: CharityCreateInput): Charity
+
+  """ Create multiple Charity items. """
+  createCharities(data: [CharitiesCreateInput]): [Charity]
+
+  """ Update a single Charity item by ID. """
+  updateCharity(id: ID!, data: CharityUpdateInput): Charity
+
+  """ Update multiple Charity items by ID. """
+  updateCharities(data: [CharitiesUpdateInput]): [Charity]
+
+  """ Delete a single Charity item by ID. """
+  deleteCharity(id: ID!): Charity
+
+  """ Delete multiple Charity items by ID. """
+  deleteCharities(ids: [ID!]): [Charity]
+
+  """ Create a single Mission item. """
+  createMission(data: MissionCreateInput): Mission
+
+  """ Create multiple Mission items. """
+  createMissions(data: [MissionsCreateInput]): [Mission]
+
+  """ Update a single Mission item by ID. """
+  updateMission(id: ID!, data: MissionUpdateInput): Mission
+
+  """ Update multiple Mission items by ID. """
+  updateMissions(data: [MissionsUpdateInput]): [Mission]
+
+  """ Delete a single Mission item by ID. """
+  deleteMission(id: ID!): Mission
+
+  """ Delete multiple Mission items by ID. """
+  deleteMissions(ids: [ID!]): [Mission]
+
   """ Create a single Post item. """
   createPost(data: PostCreateInput): Post
 
@@ -604,6 +1124,45 @@ type Query {
 
   """ Retrieve the meta-data for the User list. """
   _UsersMeta: _ListMeta
+
+  """ Search for all Category items which match the where clause. """
+  allCategories(where: CategoryWhereInput, search: String, sortBy: [SortCategoriesBy!], orderBy: String, first: Int, skip: Int): [Category]
+
+  """ Search for the Category item with the matching ID. """
+  Category(where: CategoryWhereUniqueInput!): Category
+
+  """ Perform a meta-query on all Category items which match the where clause. 
+  """
+  _allCategoriesMeta(where: CategoryWhereInput, search: String, sortBy: [SortCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Category list. """
+  _CategoriesMeta: _ListMeta
+
+  """ Search for all Charity items which match the where clause. """
+  allCharities(where: CharityWhereInput, search: String, sortBy: [SortCharitiesBy!], orderBy: String, first: Int, skip: Int): [Charity]
+
+  """ Search for the Charity item with the matching ID. """
+  Charity(where: CharityWhereUniqueInput!): Charity
+
+  """ Perform a meta-query on all Charity items which match the where clause. 
+  """
+  _allCharitiesMeta(where: CharityWhereInput, search: String, sortBy: [SortCharitiesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Charity list. """
+  _CharitiesMeta: _ListMeta
+
+  """ Search for all Mission items which match the where clause. """
+  allMissions(where: MissionWhereInput, search: String, sortBy: [SortMissionsBy!], orderBy: String, first: Int, skip: Int): [Mission]
+
+  """ Search for the Mission item with the matching ID. """
+  Mission(where: MissionWhereUniqueInput!): Mission
+
+  """ Perform a meta-query on all Mission items which match the where clause. 
+  """
+  _allMissionsMeta(where: MissionWhereInput, search: String, sortBy: [SortMissionsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Mission list. """
+  _MissionsMeta: _ListMeta
 
   """ Search for all Post items which match the where clause. """
   allPosts(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): [Post]

@@ -104,11 +104,397 @@ export type UsersCreateInput = {
   readonly data?: UserCreateInput | null;
 };
 
+export type CategoryWhereInput = {
+  readonly AND?: ReadonlyArray<CategoryWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<CategoryWhereInput | null> | null;
+  readonly id?: Scalars['ID'] | null;
+  readonly id_not?: Scalars['ID'] | null;
+  readonly id_lt?: Scalars['ID'] | null;
+  readonly id_lte?: Scalars['ID'] | null;
+  readonly id_gt?: Scalars['ID'] | null;
+  readonly id_gte?: Scalars['ID'] | null;
+  readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly name?: Scalars['String'] | null;
+  readonly name_not?: Scalars['String'] | null;
+  readonly name_contains?: Scalars['String'] | null;
+  readonly name_not_contains?: Scalars['String'] | null;
+  readonly name_starts_with?: Scalars['String'] | null;
+  readonly name_not_starts_with?: Scalars['String'] | null;
+  readonly name_ends_with?: Scalars['String'] | null;
+  readonly name_not_ends_with?: Scalars['String'] | null;
+  readonly name_i?: Scalars['String'] | null;
+  readonly name_not_i?: Scalars['String'] | null;
+  readonly name_contains_i?: Scalars['String'] | null;
+  readonly name_not_contains_i?: Scalars['String'] | null;
+  readonly name_starts_with_i?: Scalars['String'] | null;
+  readonly name_not_starts_with_i?: Scalars['String'] | null;
+  readonly name_ends_with_i?: Scalars['String'] | null;
+  readonly name_not_ends_with_i?: Scalars['String'] | null;
+  readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+};
+
+export type CategoryWhereUniqueInput = {
+  readonly id: Scalars['ID'];
+};
+
+export type SortCategoriesBy = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC';
+
+export type CategoryUpdateInput = {
+  readonly name?: Scalars['String'] | null;
+};
+
+export type CategoriesUpdateInput = {
+  readonly id: Scalars['ID'];
+  readonly data?: CategoryUpdateInput | null;
+};
+
+export type CategoryCreateInput = {
+  readonly name?: Scalars['String'] | null;
+};
+
+export type CategoriesCreateInput = {
+  readonly data?: CategoryCreateInput | null;
+};
+
+export type CategoryRelateToManyInput = {
+  readonly create?: ReadonlyArray<CategoryCreateInput | null> | null;
+  readonly connect?: ReadonlyArray<CategoryWhereUniqueInput | null> | null;
+  readonly disconnect?: ReadonlyArray<CategoryWhereUniqueInput | null> | null;
+  readonly disconnectAll?: Scalars['Boolean'] | null;
+};
+
 export type UserRelateToOneInput = {
   readonly create?: UserCreateInput | null;
   readonly connect?: UserWhereUniqueInput | null;
   readonly disconnect?: UserWhereUniqueInput | null;
   readonly disconnectAll?: Scalars['Boolean'] | null;
+};
+
+export type MissionRelateToManyInput = {
+  readonly create?: ReadonlyArray<MissionCreateInput | null> | null;
+  readonly connect?: ReadonlyArray<MissionWhereUniqueInput | null> | null;
+  readonly disconnect?: ReadonlyArray<MissionWhereUniqueInput | null> | null;
+  readonly disconnectAll?: Scalars['Boolean'] | null;
+};
+
+export type CloudinaryImageFormat = {
+  readonly prettyName?: Scalars['String'] | null;
+  readonly width?: Scalars['String'] | null;
+  readonly height?: Scalars['String'] | null;
+  readonly crop?: Scalars['String'] | null;
+  readonly aspect_ratio?: Scalars['String'] | null;
+  readonly gravity?: Scalars['String'] | null;
+  readonly zoom?: Scalars['String'] | null;
+  readonly x?: Scalars['String'] | null;
+  readonly y?: Scalars['String'] | null;
+  readonly format?: Scalars['String'] | null;
+  readonly fetch_format?: Scalars['String'] | null;
+  readonly quality?: Scalars['String'] | null;
+  readonly radius?: Scalars['String'] | null;
+  readonly angle?: Scalars['String'] | null;
+  readonly effect?: Scalars['String'] | null;
+  readonly opacity?: Scalars['String'] | null;
+  readonly border?: Scalars['String'] | null;
+  readonly background?: Scalars['String'] | null;
+  readonly overlay?: Scalars['String'] | null;
+  readonly underlay?: Scalars['String'] | null;
+  readonly default_image?: Scalars['String'] | null;
+  readonly delay?: Scalars['String'] | null;
+  readonly color?: Scalars['String'] | null;
+  readonly color_space?: Scalars['String'] | null;
+  readonly dpr?: Scalars['String'] | null;
+  readonly page?: Scalars['String'] | null;
+  readonly density?: Scalars['String'] | null;
+  readonly flags?: Scalars['String'] | null;
+  readonly transformation?: Scalars['String'] | null;
+};
+
+export type CharityWhereInput = {
+  readonly AND?: ReadonlyArray<CharityWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<CharityWhereInput | null> | null;
+  readonly id?: Scalars['ID'] | null;
+  readonly id_not?: Scalars['ID'] | null;
+  readonly id_lt?: Scalars['ID'] | null;
+  readonly id_lte?: Scalars['ID'] | null;
+  readonly id_gt?: Scalars['ID'] | null;
+  readonly id_gte?: Scalars['ID'] | null;
+  readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly name?: Scalars['String'] | null;
+  readonly name_not?: Scalars['String'] | null;
+  readonly name_contains?: Scalars['String'] | null;
+  readonly name_not_contains?: Scalars['String'] | null;
+  readonly name_starts_with?: Scalars['String'] | null;
+  readonly name_not_starts_with?: Scalars['String'] | null;
+  readonly name_ends_with?: Scalars['String'] | null;
+  readonly name_not_ends_with?: Scalars['String'] | null;
+  readonly name_i?: Scalars['String'] | null;
+  readonly name_not_i?: Scalars['String'] | null;
+  readonly name_contains_i?: Scalars['String'] | null;
+  readonly name_not_contains_i?: Scalars['String'] | null;
+  readonly name_starts_with_i?: Scalars['String'] | null;
+  readonly name_not_starts_with_i?: Scalars['String'] | null;
+  readonly name_ends_with_i?: Scalars['String'] | null;
+  readonly name_not_ends_with_i?: Scalars['String'] | null;
+  readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly description?: Scalars['String'] | null;
+  readonly description_not?: Scalars['String'] | null;
+  readonly description_contains?: Scalars['String'] | null;
+  readonly description_not_contains?: Scalars['String'] | null;
+  readonly description_starts_with?: Scalars['String'] | null;
+  readonly description_not_starts_with?: Scalars['String'] | null;
+  readonly description_ends_with?: Scalars['String'] | null;
+  readonly description_not_ends_with?: Scalars['String'] | null;
+  readonly description_i?: Scalars['String'] | null;
+  readonly description_not_i?: Scalars['String'] | null;
+  readonly description_contains_i?: Scalars['String'] | null;
+  readonly description_not_contains_i?: Scalars['String'] | null;
+  readonly description_starts_with_i?: Scalars['String'] | null;
+  readonly description_not_starts_with_i?: Scalars['String'] | null;
+  readonly description_ends_with_i?: Scalars['String'] | null;
+  readonly description_not_ends_with_i?: Scalars['String'] | null;
+  readonly description_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly description_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly email?: Scalars['String'] | null;
+  readonly email_not?: Scalars['String'] | null;
+  readonly email_contains?: Scalars['String'] | null;
+  readonly email_not_contains?: Scalars['String'] | null;
+  readonly email_starts_with?: Scalars['String'] | null;
+  readonly email_not_starts_with?: Scalars['String'] | null;
+  readonly email_ends_with?: Scalars['String'] | null;
+  readonly email_not_ends_with?: Scalars['String'] | null;
+  readonly email_i?: Scalars['String'] | null;
+  readonly email_not_i?: Scalars['String'] | null;
+  readonly email_contains_i?: Scalars['String'] | null;
+  readonly email_not_contains_i?: Scalars['String'] | null;
+  readonly email_starts_with_i?: Scalars['String'] | null;
+  readonly email_not_starts_with_i?: Scalars['String'] | null;
+  readonly email_ends_with_i?: Scalars['String'] | null;
+  readonly email_not_ends_with_i?: Scalars['String'] | null;
+  readonly email_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly email_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly telephone?: Scalars['String'] | null;
+  readonly telephone_not?: Scalars['String'] | null;
+  readonly telephone_contains?: Scalars['String'] | null;
+  readonly telephone_not_contains?: Scalars['String'] | null;
+  readonly telephone_starts_with?: Scalars['String'] | null;
+  readonly telephone_not_starts_with?: Scalars['String'] | null;
+  readonly telephone_ends_with?: Scalars['String'] | null;
+  readonly telephone_not_ends_with?: Scalars['String'] | null;
+  readonly telephone_i?: Scalars['String'] | null;
+  readonly telephone_not_i?: Scalars['String'] | null;
+  readonly telephone_contains_i?: Scalars['String'] | null;
+  readonly telephone_not_contains_i?: Scalars['String'] | null;
+  readonly telephone_starts_with_i?: Scalars['String'] | null;
+  readonly telephone_not_starts_with_i?: Scalars['String'] | null;
+  readonly telephone_ends_with_i?: Scalars['String'] | null;
+  readonly telephone_not_ends_with_i?: Scalars['String'] | null;
+  readonly telephone_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly telephone_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly website?: Scalars['String'] | null;
+  readonly website_not?: Scalars['String'] | null;
+  readonly website_contains?: Scalars['String'] | null;
+  readonly website_not_contains?: Scalars['String'] | null;
+  readonly website_starts_with?: Scalars['String'] | null;
+  readonly website_not_starts_with?: Scalars['String'] | null;
+  readonly website_ends_with?: Scalars['String'] | null;
+  readonly website_not_ends_with?: Scalars['String'] | null;
+  readonly website_i?: Scalars['String'] | null;
+  readonly website_not_i?: Scalars['String'] | null;
+  readonly website_contains_i?: Scalars['String'] | null;
+  readonly website_not_contains_i?: Scalars['String'] | null;
+  readonly website_starts_with_i?: Scalars['String'] | null;
+  readonly website_not_starts_with_i?: Scalars['String'] | null;
+  readonly website_ends_with_i?: Scalars['String'] | null;
+  readonly website_not_ends_with_i?: Scalars['String'] | null;
+  readonly website_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly website_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly category_every?: CategoryWhereInput | null;
+  readonly category_some?: CategoryWhereInput | null;
+  readonly category_none?: CategoryWhereInput | null;
+  readonly user?: UserWhereInput | null;
+  readonly user_is_null?: Scalars['Boolean'] | null;
+  readonly missions_every?: MissionWhereInput | null;
+  readonly missions_some?: MissionWhereInput | null;
+  readonly missions_none?: MissionWhereInput | null;
+  readonly cover?: Scalars['String'] | null;
+  readonly cover_not?: Scalars['String'] | null;
+  readonly cover_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly cover_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+};
+
+export type CharityWhereUniqueInput = {
+  readonly id: Scalars['ID'];
+};
+
+export type SortCharitiesBy =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'description_ASC'
+  | 'description_DESC'
+  | 'email_ASC'
+  | 'email_DESC'
+  | 'telephone_ASC'
+  | 'telephone_DESC'
+  | 'website_ASC'
+  | 'website_DESC'
+  | 'category_ASC'
+  | 'category_DESC'
+  | 'user_ASC'
+  | 'user_DESC'
+  | 'missions_ASC'
+  | 'missions_DESC';
+
+export type CharityUpdateInput = {
+  readonly name?: Scalars['String'] | null;
+  readonly description?: Scalars['String'] | null;
+  readonly email?: Scalars['String'] | null;
+  readonly telephone?: Scalars['String'] | null;
+  readonly website?: Scalars['String'] | null;
+  readonly category?: CategoryRelateToManyInput | null;
+  readonly user?: UserRelateToOneInput | null;
+  readonly missions?: MissionRelateToManyInput | null;
+  readonly cover?: any | null;
+};
+
+export type CharitiesUpdateInput = {
+  readonly id: Scalars['ID'];
+  readonly data?: CharityUpdateInput | null;
+};
+
+export type CharityCreateInput = {
+  readonly name?: Scalars['String'] | null;
+  readonly description?: Scalars['String'] | null;
+  readonly email?: Scalars['String'] | null;
+  readonly telephone?: Scalars['String'] | null;
+  readonly website?: Scalars['String'] | null;
+  readonly category?: CategoryRelateToManyInput | null;
+  readonly user?: UserRelateToOneInput | null;
+  readonly missions?: MissionRelateToManyInput | null;
+  readonly cover?: any | null;
+};
+
+export type CharitiesCreateInput = {
+  readonly data?: CharityCreateInput | null;
+};
+
+export type CharityRelateToOneInput = {
+  readonly create?: CharityCreateInput | null;
+  readonly connect?: CharityWhereUniqueInput | null;
+  readonly disconnect?: CharityWhereUniqueInput | null;
+  readonly disconnectAll?: Scalars['Boolean'] | null;
+};
+
+export type MissionWhereInput = {
+  readonly AND?: ReadonlyArray<MissionWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<MissionWhereInput | null> | null;
+  readonly id?: Scalars['ID'] | null;
+  readonly id_not?: Scalars['ID'] | null;
+  readonly id_lt?: Scalars['ID'] | null;
+  readonly id_lte?: Scalars['ID'] | null;
+  readonly id_gt?: Scalars['ID'] | null;
+  readonly id_gte?: Scalars['ID'] | null;
+  readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly name?: Scalars['String'] | null;
+  readonly name_not?: Scalars['String'] | null;
+  readonly name_contains?: Scalars['String'] | null;
+  readonly name_not_contains?: Scalars['String'] | null;
+  readonly name_starts_with?: Scalars['String'] | null;
+  readonly name_not_starts_with?: Scalars['String'] | null;
+  readonly name_ends_with?: Scalars['String'] | null;
+  readonly name_not_ends_with?: Scalars['String'] | null;
+  readonly name_i?: Scalars['String'] | null;
+  readonly name_not_i?: Scalars['String'] | null;
+  readonly name_contains_i?: Scalars['String'] | null;
+  readonly name_not_contains_i?: Scalars['String'] | null;
+  readonly name_starts_with_i?: Scalars['String'] | null;
+  readonly name_not_starts_with_i?: Scalars['String'] | null;
+  readonly name_ends_with_i?: Scalars['String'] | null;
+  readonly name_not_ends_with_i?: Scalars['String'] | null;
+  readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly date?: Scalars['String'] | null;
+  readonly date_not?: Scalars['String'] | null;
+  readonly date_lt?: Scalars['String'] | null;
+  readonly date_lte?: Scalars['String'] | null;
+  readonly date_gt?: Scalars['String'] | null;
+  readonly date_gte?: Scalars['String'] | null;
+  readonly date_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly date_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly duration?: Scalars['String'] | null;
+  readonly duration_not?: Scalars['String'] | null;
+  readonly duration_contains?: Scalars['String'] | null;
+  readonly duration_not_contains?: Scalars['String'] | null;
+  readonly duration_starts_with?: Scalars['String'] | null;
+  readonly duration_not_starts_with?: Scalars['String'] | null;
+  readonly duration_ends_with?: Scalars['String'] | null;
+  readonly duration_not_ends_with?: Scalars['String'] | null;
+  readonly duration_i?: Scalars['String'] | null;
+  readonly duration_not_i?: Scalars['String'] | null;
+  readonly duration_contains_i?: Scalars['String'] | null;
+  readonly duration_not_contains_i?: Scalars['String'] | null;
+  readonly duration_starts_with_i?: Scalars['String'] | null;
+  readonly duration_not_starts_with_i?: Scalars['String'] | null;
+  readonly duration_ends_with_i?: Scalars['String'] | null;
+  readonly duration_not_ends_with_i?: Scalars['String'] | null;
+  readonly duration_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly duration_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly category_every?: CategoryWhereInput | null;
+  readonly category_some?: CategoryWhereInput | null;
+  readonly category_none?: CategoryWhereInput | null;
+  readonly charity?: CharityWhereInput | null;
+  readonly charity_is_null?: Scalars['Boolean'] | null;
+};
+
+export type MissionWhereUniqueInput = {
+  readonly id: Scalars['ID'];
+};
+
+export type SortMissionsBy =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'date_ASC'
+  | 'date_DESC'
+  | 'duration_ASC'
+  | 'duration_DESC'
+  | 'category_ASC'
+  | 'category_DESC'
+  | 'charity_ASC'
+  | 'charity_DESC';
+
+export type MissionUpdateInput = {
+  readonly name?: Scalars['String'] | null;
+  readonly description?: Scalars['JSON'] | null;
+  readonly date?: Scalars['String'] | null;
+  readonly duration?: Scalars['String'] | null;
+  readonly category?: CategoryRelateToManyInput | null;
+  readonly charity?: CharityRelateToOneInput | null;
+};
+
+export type MissionsUpdateInput = {
+  readonly id: Scalars['ID'];
+  readonly data?: MissionUpdateInput | null;
+};
+
+export type MissionCreateInput = {
+  readonly name?: Scalars['String'] | null;
+  readonly description?: Scalars['JSON'] | null;
+  readonly date?: Scalars['String'] | null;
+  readonly duration?: Scalars['String'] | null;
+  readonly category?: CategoryRelateToManyInput | null;
+  readonly charity?: CharityRelateToOneInput | null;
+};
+
+export type MissionsCreateInput = {
+  readonly data?: MissionCreateInput | null;
 };
 
 export type TagRelateToManyInput = {
@@ -344,6 +730,132 @@ export type UserListFn = (
   UserListTypeInfo['fields']
 >;
 
+export type CategoryListTypeInfo = {
+  key: 'Category';
+  fields: 'id' | 'name';
+  backing: {
+    readonly id: string;
+    readonly name?: string | null;
+  };
+  inputs: {
+    where: CategoryWhereInput;
+    create: CategoryCreateInput;
+    update: CategoryUpdateInput;
+  };
+  args: {
+    listQuery: {
+      readonly where?: CategoryWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortCategoriesBy> | null;
+      readonly first?: Scalars['Int'] | null;
+      readonly skip?: Scalars['Int'] | null;
+    };
+  };
+};
+
+export type CategoryListFn = (
+  listConfig: import('@keystone-next/keystone/schema').ListConfig<
+    CategoryListTypeInfo,
+    CategoryListTypeInfo['fields']
+  >
+) => import('@keystone-next/keystone/schema').ListConfig<
+  CategoryListTypeInfo,
+  CategoryListTypeInfo['fields']
+>;
+
+export type CharityListTypeInfo = {
+  key: 'Charity';
+  fields:
+    | 'id'
+    | 'name'
+    | 'description'
+    | 'email'
+    | 'telephone'
+    | 'website'
+    | 'category'
+    | 'user'
+    | 'missions'
+    | 'cover';
+  backing: {
+    readonly id: string;
+    readonly name?: string | null;
+    readonly description?: string | null;
+    readonly email?: string | null;
+    readonly telephone?: string | null;
+    readonly website?: string | null;
+    readonly category?: string | null;
+    readonly user?: string | null;
+    readonly missions?: string | null;
+    readonly cover?: any;
+  };
+  inputs: {
+    where: CharityWhereInput;
+    create: CharityCreateInput;
+    update: CharityUpdateInput;
+  };
+  args: {
+    listQuery: {
+      readonly where?: CharityWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortCharitiesBy> | null;
+      readonly first?: Scalars['Int'] | null;
+      readonly skip?: Scalars['Int'] | null;
+    };
+  };
+};
+
+export type CharityListFn = (
+  listConfig: import('@keystone-next/keystone/schema').ListConfig<
+    CharityListTypeInfo,
+    CharityListTypeInfo['fields']
+  >
+) => import('@keystone-next/keystone/schema').ListConfig<
+  CharityListTypeInfo,
+  CharityListTypeInfo['fields']
+>;
+
+export type MissionListTypeInfo = {
+  key: 'Mission';
+  fields:
+    | 'id'
+    | 'name'
+    | 'description'
+    | 'date'
+    | 'duration'
+    | 'category'
+    | 'charity';
+  backing: {
+    readonly id: string;
+    readonly name?: string | null;
+    readonly description?: Record<string, any>[] | null;
+    readonly date?: Date | null;
+    readonly duration?: string | null;
+    readonly category?: string | null;
+    readonly charity?: string | null;
+  };
+  inputs: {
+    where: MissionWhereInput;
+    create: MissionCreateInput;
+    update: MissionUpdateInput;
+  };
+  args: {
+    listQuery: {
+      readonly where?: MissionWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortMissionsBy> | null;
+      readonly first?: Scalars['Int'] | null;
+      readonly skip?: Scalars['Int'] | null;
+    };
+  };
+};
+
+export type MissionListFn = (
+  listConfig: import('@keystone-next/keystone/schema').ListConfig<
+    MissionListTypeInfo,
+    MissionListTypeInfo['fields']
+  >
+) => import('@keystone-next/keystone/schema').ListConfig<
+  MissionListTypeInfo,
+  MissionListTypeInfo['fields']
+>;
+
 export type PostListTypeInfo = {
   key: 'Post';
   fields:
@@ -423,6 +935,9 @@ export type TagListFn = (
 
 export type KeystoneListsTypeInfo = {
   readonly User: UserListTypeInfo;
+  readonly Category: CategoryListTypeInfo;
+  readonly Charity: CharityListTypeInfo;
+  readonly Mission: MissionListTypeInfo;
   readonly Post: PostListTypeInfo;
   readonly Tag: TagListTypeInfo;
 };

@@ -1,4 +1,5 @@
-import { Text, Checkbox, Password } from '@keystonejs/fields'
+import { Checkbox, Password, Text } from '@keystonejs/fields'
+
 import access from '../utils/access'
 
 module.exports = {

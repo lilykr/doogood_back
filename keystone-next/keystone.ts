@@ -4,19 +4,19 @@ import { statelessSessions, withItemData } from '@keystone-next/keystone/session
 
 import { lists } from './src/schema'
 
-let sessionSecret = process.env.SESSION_SECRET;
+let sessionSecret = process.env.SESSION_SECRET
 
 if (!sessionSecret) {
   if (process.env.NODE_ENV === 'production') {
     throw new Error(
       'The SESSION_SECRET environment variable must be set in production'
-    );
+    )
   } else {
-    sessionSecret = '-- DEV COOKIE SECRET; CHANGE ME --';
+    sessionSecret = '-- DEV COOKIE SECRET; CHANGE ME --'
   }
 }
 
-let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
+const sessionMaxAge = 60 * 60 * 24 * 30 // 30 days
 
 const auth = createAuth({
   listKey: 'User',
@@ -25,7 +25,7 @@ const auth = createAuth({
   initFirstItem: {
     fields: ['name', 'email', 'password'],
   },
-});
+})
 
 export default auth.withAuth(
   config({
@@ -34,7 +34,7 @@ export default auth.withAuth(
       url: process.env.DATABASE_URL || 'postgres://ericedouard:azertyuiop@localhost/doogood',
     },
     ui: {
-      isAccessAllowed: (context) => !!context.session?.data,
+      isAccessAllowed: context => !!context.session?.data,
     },
     lists,
     session: withItemData(
@@ -45,4 +45,4 @@ export default auth.withAuth(
       { User: 'name' }
     ),
   })
-);
+)
