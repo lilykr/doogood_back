@@ -1,4 +1,5 @@
-import { Text, Color } from '@keystonejs/fields'
+import { Text } from '@keystonejs/fields'
+import { Color } from '@keystonejs/fields-color'
 
 module.exports = {
   fields: {
@@ -7,11 +8,11 @@ module.exports = {
       isRequired: true,
     },
     lightColor: {
-      type: Text,
+      type: Color,
       isRequired: true,
     },
     darkColor: {
-      type: Text,
+      type: Color,
       isRequired: true,
     },
   },
