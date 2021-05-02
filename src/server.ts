@@ -2,13 +2,14 @@ require('dotenv').config()
 
 import express from 'express'
 
-import { AdminUIApp } from '@keystonejs/app-admin-ui'
-import { onConnect } from './init'
+import { MongooseAdapter as Adapter } from '@keystonejs/adapter-mongoose'
+// import { AdminUIApp } from '@keystonejs/app-admin-ui'
 import { GraphQLApp } from '@keystonejs/app-graphql'
+import { PasswordAuthStrategy } from '@keystonejs/auth-password'
 import { Keystone } from '@keystonejs/keystone'
 
-import { PasswordAuthStrategy } from '@keystonejs/auth-password'
-import { MongooseAdapter as Adapter } from '@keystonejs/adapter-mongoose'
+import { AdminUIApp } from './app-admin-ui'
+import { onConnect } from './init'
 
 const Mission = require('./lists/Mission')
 const User = require('./lists/User')
